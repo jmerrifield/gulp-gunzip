@@ -19,6 +19,8 @@ module.exports = function () {
 
     if (file.isBuffer()) {
       zlib.gunzip(file.contents, function (err, buffer) {
+        if (err) return this.emit('error', err)
+
         this.push(new gutil.File({
           path: path,
           contents: buffer
