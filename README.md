@@ -1,6 +1,7 @@
 # gulp-gunzip
 
 [![NPM version](https://badge.fury.io/js/gulp-gunzip.svg)](http://badge.fury.io/js/gulp-gunzip)
+[![Build Status](https://travis-ci.org/jmerrifield/gulp-gunzip.svg?branch=master)](https://travis-ci.org/jmerrifield/gulp-gunzip)
 
 Uncompress gzip files in your [gulp](http://gulpjs.com) build pipeline
 
