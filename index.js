@@ -5,7 +5,8 @@ var zlib = require('zlib')
 module.exports = function () {
   return through.obj(function (file, enc, callback) {
     if (file.isNull()) {
-      return this.push(file)
+      this.push(file)
+      return callback()
     }
 
     var path = file.path.replace(/\.gz$/, '')
@@ -15,6 +16,8 @@ module.exports = function () {
         path: path,
         contents: file.contents.pipe(zlib.createGunzip())
       }))
+
+      callback()
     }
 
     if (file.isBuffer()) {
@@ -25,6 +28,8 @@ module.exports = function () {
           path: path,
           contents: buffer
         }))
+
+        callback()
       }.bind(this))
     }
   })
