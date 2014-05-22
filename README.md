@@ -41,6 +41,7 @@ gulp.task('default', function () {
   .pipe(untar())
   .pipe(gulp.dest('output'))
 })
+```
 
 ## License
 
