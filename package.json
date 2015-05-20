@@ -4,9 +4,8 @@
   "description": "Uncompress gzip files in your gulp build pipeline",
   "main": "index.js",
   "dependencies": {
-    "gulp-util": "~2.2.14",
-    "through2": "~0.4.1",
-    "streamifier": "~0.1.0"
+    "through2": "~0.6.5",
+    "vinyl": "~0.4.6"
   },
   "devDependencies": {
     "event-stream": "~3.1.5",
@@ -32,5 +31,8 @@
   ],
   "bugs": {
     "url": "https://github.com/jmerrifield/gulp-gunzip/issues"
-  }
+  },
+  "files": [
+    "index.js"
+  ]
 }

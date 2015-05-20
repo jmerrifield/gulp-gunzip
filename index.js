@@ -1,5 +1,5 @@
 var through = require('through2')
-var gutil = require('gulp-util')
+var File = require('vinyl');
 var zlib = require('zlib')
 
 module.exports = function () {
@@ -12,7 +12,7 @@ module.exports = function () {
     var path = file.path.replace(/\.gz$/, '')
 
     if (file.isStream()) {
-      this.push(new gutil.File({
+      this.push(new File({
         path: path,
         contents: file.contents.pipe(zlib.createGunzip())
       }))
@@ -24,7 +24,7 @@ module.exports = function () {
       zlib.gunzip(file.contents, function (err, buffer) {
         if (err) return this.emit('error', err)
 
-        this.push(new gutil.File({
+        this.push(new File({
           path: path,
           contents: buffer
         }))

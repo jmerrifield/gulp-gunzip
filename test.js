@@ -1,5 +1,5 @@
 var es = require('event-stream')
-var gutil = require('gulp-util')
+var File = require('vinyl')
 var assert = require('assert')
 var fs = require('fs')
 var gunzip = require('./index')
@@ -17,7 +17,7 @@ describe('gulp-gunzip', function () {
         }))
       })
 
-      stream.write(new gutil.File({
+      stream.write(new File({
         path: './fixtures/test.txt.gz',
         contents: fs.createReadStream('./fixtures/test.txt.gz')
       }))
@@ -40,7 +40,7 @@ describe('gulp-gunzip', function () {
           }))
         })
 
-        stream.write(new gutil.File({
+        stream.write(new File({
           path: './fixtures/not-gzipped.txt',
           contents: fs.createReadStream('./fixtures/not-gzipped.txt')
         }))
@@ -60,7 +60,7 @@ describe('gulp-gunzip', function () {
         done()
       })
 
-      stream.write(new gutil.File({
+      stream.write(new File({
         path: './fixtures/test.txt.gz',
         contents: fs.readFileSync('./fixtures/test.txt.gz')
       }))
@@ -81,7 +81,7 @@ describe('gulp-gunzip', function () {
           done()
         })
 
-        stream.write(new gutil.File({
+        stream.write(new File({
           path: './fixtures/not-gzipped.txt',
           contents: fs.readFileSync('./fixtures/not-gzipped.txt')
         }))
@@ -100,7 +100,7 @@ describe('gulp-gunzip', function () {
         done()
       })
 
-      stream.write(new gutil.File({
+      stream.write(new File({
         path: './fixtures/test.txt.gz',
         contents: null
       }))
