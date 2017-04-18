@@ -25,6 +25,7 @@ module.exports = function () {
         if (err) return this.emit('error', err)
 
         this.push(new File({
+          base: file.base,
           path: path,
           contents: buffer
         }))
