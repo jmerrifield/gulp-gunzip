@@ -25,6 +25,27 @@ describe('gulp-gunzip', function () {
       stream.end()
     })
 
+    it('should keep the file base', function (done) {
+      var stream = gunzip()
+
+      stream.once('data', function (file) {
+        file.contents.pipe(es.wait(function (err, data) {
+          assert.equal(data, 'File 1\n')
+          assert.equal(file.base, './fixtures/')
+          assert.equal(file.path, './fixtures/test.txt')
+          done()
+        }))
+      })
+
+      stream.write(new File({
+        base: './fixtures/',
+        path: './fixtures/test.txt.gz',
+        contents: fs.createReadStream('./fixtures/test.txt.gz')
+      }))
+
+      stream.end()
+    })
+
     context('the file is not unzippable', function () {
       it('should output a file whose contents emit a stream error', function (done) {
         var stream = gunzip()
@@ -61,6 +82,24 @@ describe('gulp-gunzip', function () {
       })
 
       stream.write(new File({
+        path: './fixtures/test.txt.gz',
+        contents: fs.readFileSync('./fixtures/test.txt.gz')
+      }))
+
+      stream.end()
+    })
+
+    it('should keep the file base', function (done) {
+      var stream = gunzip()
+
+      stream.once('data', function (file) {
+        assert.equal(file.base, './fixtures/')
+        assert.equal(file.path, './fixtures/test.txt')
+        done()
+      })
+
+      stream.write(new File({
+        base: './fixtures/',
         path: './fixtures/test.txt.gz',
         contents: fs.readFileSync('./fixtures/test.txt.gz')
       }))
