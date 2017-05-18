@@ -13,6 +13,7 @@ module.exports = function () {
 
     if (file.isStream()) {
       this.push(new File({
+        base: file.base,
         path: path,
         contents: file.contents.pipe(zlib.createGunzip())
       }))
@@ -25,6 +26,7 @@ module.exports = function () {
         if (err) return this.emit('error', err)
 
         this.push(new File({
+          base: file.base,
           path: path,
           contents: buffer
         }))
