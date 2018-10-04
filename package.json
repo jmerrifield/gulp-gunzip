@@ -4,18 +4,19 @@
   "description": "Uncompress gzip files in your gulp build pipeline",
   "main": "index.js",
   "dependencies": {
-    "through2": "~0.6.5",
-    "vinyl": "~0.4.6"
+    "through2": "~2.0.3",
+    "vinyl": "~2.0.1"
   },
   "devDependencies": {
-    "event-stream": "~3.1.5",
-    "mocha": "~1.18.2",
-    "async": "~0.8.0",
-    "lodash": "~2.4.1",
-    "jshint": "~2.5.0"
+    "event-stream": "~3.3.4",
+    "mocha": "~3.2.0",
+    "async": "~2.1.5",
+    "lodash": "~4.17.4",
+    "jshint": "~2.9.4"
   },
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "mocha --reporter spec",
+    "lint": "jshint ."
   },
   "author": "Jon Merrifield",
   "license": "MIT",
